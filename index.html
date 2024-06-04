@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Heart</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fde3e3; /* Light pink background */
+  }
+  #heart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: pink; /* Filled heart color */
+    animation: drawHeart 2s forwards; /* Animation to draw the heart */
+  }
+  #heart::after,
+  #heart::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 160px;
+    border-radius: 100px 100px 0 0;
+    background: pink; /* Filled heart color */
+    transform: rotate(-45deg);
+  }
+  #heart::after {
+    left: 100px;
+  }
+  #heart::before {
+    left: -100px;
+  }
+  @keyframes drawHeart {
+    0% {
+      width: 0;
+      height: 0;
+    }
+    50% {
+      width: 200px;
+      height: 200px;
+    }
+    100% {
+      width: 200px;
+      height: 200px;
+      background: pink; /* Filled heart color */
+    }
+  }
+  #glitter {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('glitter.png'); /* Glitter image */
+    background-size: cover;
+    animation: sparkle 1s infinite; /* Sparkle animation */
+  }
+  @keyframes sparkle {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1>Welcome to my website!</h1>
+<div id="heart"></div>
+<div id="glitter"></div>
 </body>
 </html>
