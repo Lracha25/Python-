@@ -13,44 +13,21 @@
     align-items: center;
     background-color: #fde3e3; /* Light pink background */
   }
-  #heart {
+  #heart-container {
     position: relative;
     width: 200px;
     height: 200px;
-    background: pink; /* Filled heart color */
-    animation: drawHeart 2s forwards; /* Animation to draw the heart */
   }
-  #heart::after,
-  #heart::before {
-    content: '';
+  #heart {
     position: absolute;
-    top: 0;
-    width: 100px;
-    height: 160px;
-    border-radius: 100px 100px 0 0;
-    background: pink; /* Filled heart color */
-    transform: rotate(-45deg);
-  }
-  #heart::after {
-    left: 100px;
-  }
-  #heart::before {
-    left: -100px;
-  }
-  @keyframes drawHeart {
-    0% {
-      width: 0;
-      height: 0;
-    }
-    50% {
-      width: 200px;
-      height: 200px;
-    }
-    100% {
-      width: 200px;
-      height: 200px;
-      background: pink; /* Filled heart color */
-    }
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 30px solid pink; /* Filled heart color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: drawHeart 2s forwards; /* Animation to draw the heart */
   }
   #glitter {
     position: absolute;
@@ -59,6 +36,23 @@
     background-image: url('glitter.png'); /* Glitter image */
     background-size: cover;
     animation: sparkle 1s infinite; /* Sparkle animation */
+  }
+  @keyframes drawHeart {
+    0% {
+      width: 0;
+      height: 0;
+      border: 30px solid transparent; /* Transparent border */
+    }
+    50% {
+      width: 200px;
+      height: 200px;
+      border: 30px solid pink; /* Filled heart color */
+    }
+    100% {
+      width: 200px;
+      height: 200px;
+      border: 30px solid pink; /* Filled heart color */
+    }
   }
   @keyframes sparkle {
     0% {
@@ -74,7 +68,17 @@
 </style>
 </head>
 <body>
-<div id="heart"></div>
+<div id="heart-container">
+  <div id="heart"></div>
+</div>
 <div id="glitter"></div>
+
+<script>
+  // Simulate drawing the heart shape
+  setTimeout(() => {
+    document.getElementById('heart').style.border = '30px solid pink';
+  }, 1000);
+</script>
+
 </body>
 </html>
