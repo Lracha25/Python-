@@ -1,3 +1,16 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
 import turtle
 
 # Create a turtle object
@@ -16,12 +29,6 @@ heart.setheading(60)
 heart.circle(-90, 200)
 heart.forward(180)
 heart.end_fill()
-
-# Write the text
-heart.penup()
-heart.goto(-100, -220)
-heart.color('black')
-heart.write("I LOVE PYTHAGOREAN THEOREM", font=("Arial", 20, "bold"))
 
 # Hide the turtle and display the result
 heart.hideturtle()
